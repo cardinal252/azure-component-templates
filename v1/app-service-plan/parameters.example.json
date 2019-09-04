@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "sku": {
+      "value": {
+        "name": "P2V2",
+        "tier": "Premium",
+        "size": "P2V2",
+        "family": "P",
+        "capacity": 1
+      }
+    }
+  }
+}
