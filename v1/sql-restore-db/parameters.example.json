@@ -1,0 +1,36 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageAccountKey": {
+      "value": "xxx"
+    },
+    "databaseServerName": {
+      "value": "test-cit-sql"
+    },
+    "databaseNames": {
+      "value": [
+        "Sitecore.Core",
+        "Sitecore.Exm.master",
+        "Sitecore.Experienceforms",
+        "Sitecore.Marketingautomation",
+        "Sitecore.Master",
+        "Sitecore.Messaging",
+        "Sitecore.Processing.Engine.Storage",
+        "Sitecore.Processing.Engine.Tasks",
+        "Sitecore.Processing.pools",
+        "Sitecore.Processing.tasks",
+        "Sitecore.Referencedata",
+        "Sitecore.Reporting",
+        "Sitecore.Sessions",
+        "Sitecore.Web",
+        "Sitecore.Xdb.Collection.Database.Sql",
+        "Sitecore.Xdb.Collection.Shard0",
+        "Sitecore.Xdb.Collection.Shard1"
+      ]
+    },
+    "bacpacBaseUrl": {
+      "value": "https://citsitecoredeploy.blob.core.windows.net/sql/"
+    }
+  }
+}

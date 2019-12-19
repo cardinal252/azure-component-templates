@@ -1,0 +1,41 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "minTlsVersion": {
+      "value": "1.1"
+    },
+    "includeDeploymentSlot": {
+      "value": false
+    },
+    "appSettings": {
+      "value": [
+        {
+          "name": "Key1",
+          "value": "Value1"
+        },
+        {
+          "name": "Key2",
+          "value": "Value2"
+        }
+      ]
+    },
+    "connectionStrings": {
+      "value": [
+        {
+          "name": "Key1",
+          "connectionString": "Value1",
+          "type": "SQLAzure"
+        },
+        {
+          "name": "Key2",
+          "connectionString": "Value2",
+          "type": "Custom"
+        }
+      ]
+    },
+    "alwaysOn": {
+      "value": true
+    }
+  }
+}
