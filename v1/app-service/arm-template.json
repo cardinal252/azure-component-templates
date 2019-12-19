@@ -53,14 +53,6 @@
         "description": "The slot name if include deployment slot is set to true"
       }
     },
-    "appSettings": {
-      "type": "array",
-      "defaultValue": []
-    },
-    "connectionStrings": {
-      "type": "array",
-      "defaultValue": []
-    },
     "clientAffinityEnabled": {
       "type": "bool",
       "defaultValue": false
@@ -101,9 +93,7 @@
           "alwaysOn": "[parameters('alwaysOn')]",
           "minTlsVersion": "[parameters('minTlsVersion')]",
           "numberOfWorkers": "[parameters('numberOfWorkers')]",
-          "connectionStrings": "[parameters('connectionStrings')]",
-          "use32BitWorkerProcess": "[parameters('use32BitWorkerProcess')]",
-          "appSettings": "[parameters('appSettings')]"
+          "use32BitWorkerProcess": "[parameters('use32BitWorkerProcess')]"
         }
       },
       "resources": [

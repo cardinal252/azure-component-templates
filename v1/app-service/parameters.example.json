@@ -8,32 +8,6 @@
     "includeDeploymentSlot": {
       "value": false
     },
-    "appSettings": {
-      "value": [
-        {
-          "name": "Key1",
-          "value": "Value1"
-        },
-        {
-          "name": "Key2",
-          "value": "Value2"
-        }
-      ]
-    },
-    "connectionStrings": {
-      "value": [
-        {
-          "name": "Key1",
-          "connectionString": "Value1",
-          "type": "SQLAzure"
-        },
-        {
-          "name": "Key2",
-          "connectionString": "Value2",
-          "type": "Custom"
-        }
-      ]
-    },
     "alwaysOn": {
       "value": true
     }
