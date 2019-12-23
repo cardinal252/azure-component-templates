@@ -16,7 +16,7 @@
         },
         "os": {
             "type": "string",
-            "allowedValues":[
+            "allowedValues": [
                 "Windows",
                 "Linux"
             ],
@@ -40,9 +40,9 @@
             "location": "[resourceGroup().location]",
             "sku": "[parameters('sku')]",
             "kind": "[parameters('os')]",
-            "properties":{
+            "properties": {
                 "name": "[parameters('name')]"
-           }
+            }
         }
     ],
     "outputs": {}

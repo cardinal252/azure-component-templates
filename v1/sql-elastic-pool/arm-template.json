@@ -2,6 +2,12 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "name": {
+      "type": "string",
+      "metadata": {
+        "description": "The Elastic Pool name."
+      }
+    },    
     "adminUser": {
       "type": "string",
       "metadata": {
@@ -18,12 +24,6 @@
       "type": "string",
       "metadata": {
         "description": "The SQL Server name."
-      }
-    },
-    "elasticPoolName": {
-      "type": "string",
-      "metadata": {
-        "description": "The Elastic Pool name."
       }
     },
     "edition": {
@@ -71,12 +71,26 @@
   "variables": {},
   "resources": [
     {
+      "apiVersion": "2014-04-01-preview",
+      "location": "[parameters('location')]",
+      "name": "[parameters('serverName')]",
+      "properties": {
+        "administratorLogin": "[parameters('adminUser')]",
+        "administratorLoginPassword": "[parameters('adminPassword')]",
+        "version": "12.0"
+      },
+      "type": "Microsoft.Sql/servers"
+    },
+    {
       "type": "Microsoft.Sql/servers/elasticPools",   
       "apiVersion": "2017-10-01-preview",
-      "name": "[concat(parameters('serverName'), '/', parameters('elasticPoolName'))]",
+      "name": "[concat(parameters('serverName'), '/', parameters('name'))]",
       "location": "westeurope",
       "sku": "[parameters('sku')]",
       "kind": "vcore,pool",
+      "dependsOn": [
+        "[concat('Microsoft.Sql/servers/', parameters('serverName'))]"
+      ],        
       "properties": {
         "maxSizeBytes": "[parameters('maxSizeBytes')]",
         "zoneRedundant": false,
@@ -87,6 +101,9 @@
       "apiVersion": "2014-04-01-preview",
       "location": "[parameters('location')]",
       "name": "[concat(parameters('serverName'), '/', 'AllowAllWindowsAzureIps')]",
+      "dependsOn": [
+        "[concat('Microsoft.Sql/servers/', parameters('serverName'))]"
+      ],      
       "properties": {
         "endIpAddress": "0.0.0.0",
         "startIpAddress": "0.0.0.0"
@@ -99,11 +116,11 @@
       "location": "[parameters('location')]",
       "apiVersion": "2014-04-01-preview",
       "dependsOn": [
-        "[concat('Microsoft.Sql/servers/', parameters('serverName') ,'/elasticpools/', parameters('elasticPoolName'))]"
+        "[concat('Microsoft.Sql/servers/', parameters('serverName') ,'/elasticpools/', parameters('name'))]"
       ],
       "properties": {
         "requestedServiceObjectiveName": "ElasticPool",
-        "elasticPoolName": "[parameters('elasticPoolName')]"
+        "elasticPoolName": "[parameters('name')]"
       },
       "copy": {
         "name": "addDatabasesInElasticPool",
