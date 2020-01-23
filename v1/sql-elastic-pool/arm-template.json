@@ -85,7 +85,7 @@
       "type": "Microsoft.Sql/servers/elasticPools",   
       "apiVersion": "2017-10-01-preview",
       "name": "[concat(parameters('serverName'), '/', parameters('name'))]",
-      "location": "westeurope",
+      "location": "[parameters('location')]",
       "sku": "[parameters('sku')]",
       "kind": "vcore,pool",
       "dependsOn": [
